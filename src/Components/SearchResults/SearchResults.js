@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchResults';
 
-class SearchResults extends React.Component{
+ class SearchResults extends React.Component{
     render(){
         return(
             <div className="SearchResults">
@@ -11,3 +11,5 @@ class SearchResults extends React.Component{
         );
     }
 }
+
+export default SearchResults;
