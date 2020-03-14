@@ -53,9 +53,9 @@ class App extends React.Component{
   render(){
     return (
       <div>
-          <h1>Ja<span className="highlight">mmm</span>ing</h1>
+          <h1>Beat<span className="highlight">S</span>ync</h1>
         <div className="App">
-            <SearchBar />
+            <SearchBar onSearch={this.search}/>
           <div className="App-playlist">
             <SearchResults onAdd={this.addTrack} searchResults={this.state.searchResults} />
             <Playlist playlist={this.state.playlistName} playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} onSave={this.savePlaylist} />
