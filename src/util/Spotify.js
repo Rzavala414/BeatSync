@@ -13,7 +13,7 @@ const Spotify = {
         const expiresInMatch = window.location.match(/expires_in=([^&]*)/);
 
         if(accessTokenMatch && expiresInMatch){
-            accessTokenMatch = accessTokenMatch[1];
+            const accessTokenMatch = accessTokenMatch[1];
             const expiresIn = Number(expiresInMatch[1]);
 
             //Clears parameters, making it so that new access token is  able to be obtained after session expires
@@ -45,13 +45,13 @@ const Spotify = {
                     }
                 })
             }else{
-                return {};
+                return [];
             }
         })
     },
 
     savePlaylist(playlistName, trackURI) {
-        if(!name || !trackURI.length){
+        if(!playlistName || !trackURI.length){
             return;
         }
 
@@ -65,10 +65,15 @@ const Spotify = {
              return fetch(`https://api.spotify.com/v1/${userId}/playlists`, {
                  headers: headers,
                  method: 'POST',
-                 body: JSON.stringify({ name: name})
+                 body: JSON.stringify({ playlistName: playlistName})
              }).then(response => response.json())
              .then(jsonResponse => {
                  const playlistId = jsonResponse.id;
+                 return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
+                     headers: headers,
+                     method: "POST",
+                     body: JSON.stringify({ uris: trackURI})
+                })
              })
 
         })
