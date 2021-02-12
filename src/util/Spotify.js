@@ -1,4 +1,4 @@
-const clientID ="f243bdd248e14ce49e7b31c602f04f56"
+const clientID =""
 const redirectURL = 'http://localhost:3000/';
 let accessToken;
 
